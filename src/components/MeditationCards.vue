@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useMeditaionStore } from '@/stores/meditations.store';
+import { useMeditationStore } from '@/stores/meditations.store';
 import { onMounted } from 'vue';
 import ButtonStart from './ButtonStart.vue';
 
-const store = useMeditaionStore();
+const store = useMeditationStore();
 
 onMounted(() => {
     store.fetchMeditations();
