@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import IconAnxious from './icons/IconAnxious.vue';
 import IconCalm from './icons/IconCalm.vue';
 import IconFocus from './icons/IconFocus.vue';
 import IconRelax from './icons/IconRelax.vue';
@@ -19,6 +20,7 @@ const emit = defineEmits<{
             <IconRelax v-show="iconName=='Расслабленно'"/>
             <IconCalm v-show="iconName=='Спокойно'"/>
             <IconFocus v-show="iconName=='Фокусированно'"/>
+            <IconAnxious v-show="iconName=='Тревожно'"/>
         </button>
         <div class="button-title">
             {{ iconName }}

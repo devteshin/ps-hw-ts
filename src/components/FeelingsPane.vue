@@ -15,7 +15,7 @@ onMounted(() => {
 <template>
     <div class="feelings">
         <div class="feelings__avatar">
-            <img src="/public/avatar.png" alt="Изображение пользователя">
+            <img src="/avatar.png" alt="Изображение пользователя">
         </div>
         <div v-if="store.profile" class="feelings__welcome">
             Добро пожаловать, {{ store.profile.username }} !
