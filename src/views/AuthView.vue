@@ -26,6 +26,11 @@ function onSubmit(event: Event) {
   authStore.login(form.value.userName, form.value.password);
   form.value = {};
 };
+
+function redirectToRegistration() {
+  router.push({name: 'register'});
+};
+
 </script>
 
 <template>
@@ -36,6 +41,7 @@ function onSubmit(event: Event) {
       <InputString v-model="form.password" placeholder="Пароль" type="password"/>
       <ButtonText type="submit">Войти в приложение</ButtonText>
     </form>
+    <ButtonText @click="redirectToRegistration">Создать аккаунт</ButtonText>
   </div>
 </template>
 

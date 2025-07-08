@@ -18,6 +18,11 @@ watch(
     }
 });
 
+function redirectToLogin() {
+  router.push({name: 'login'});
+};
+
+
 function onSubmit(event: Event) {
   event.preventDefault();
   if (!form.value.email || !form.value.userName || !form.value.password ) {
@@ -38,6 +43,7 @@ function onSubmit(event: Event) {
       <InputString v-model="form.password" placeholder="Пароль" type="password"/>
       <ButtonText type="submit">Создать аккаунт</ButtonText>
     </form>
+    <ButtonText @click="redirectToLogin">Войти в приложение</ButtonText>
   </div>
 </template>
 

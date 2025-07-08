@@ -39,7 +39,7 @@ export const router = createRouter({
 
 router.beforeEach((to) => {
   const authStore = useAuthStore()
-  if (!authStore.getToken && !(to.name == 'login' || to.name == 'register' || to.name == 'start')) {
+  if (!authStore.getToken && !(to.name == 'login' || to.name == 'register')) {
     return { name: 'login' }
   }
   if (authStore.getToken && (to.name == 'login' || to.name == 'register' || to.name == 'start')) {
