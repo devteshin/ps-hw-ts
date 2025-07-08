@@ -27,26 +27,40 @@ export const useAuthStore = defineStore('auth', () => {
   const getToken = computed(() => token.value)
 
   async function login(userName: string, password: string) {
-    const { data } = await http.post<LoginResponse>(API_ROUTES.auth.login, {
-      userName,
-      password,
-    })
-    setToken(data.data.token)
+    try {
+      const { data } = await http.post<LoginResponse>(API_ROUTES.auth.login, {
+        userName,
+        password,
+      })
+      if (data.message == 'success') {
+        setToken(data.data.token)
+      } else {
+        alert(data.message)
+      }
+    }
+    catch {
+      alert("Ошибка при авторизации");
+    }
   }
 
   async function create(email:string, userName: string, password: string) {
-    const { data } = await client().post<CreateResponse>(API_ROUTES.auth.register, {
-      userName,
-      email,
-      password,
-    });
-    if (data.status == 'success') {
-      login(userName, password)
+    try {
+      const { data } = await http.post<CreateResponse>(API_ROUTES.auth.register, {
+        userName,
+        email,
+        password,
+      });
+      console.log(data);
+      if (data.status == 'success') {
+        login(userName, password)
+      }
+      else {
+        alert(data.message)
+      }
     }
-    else {
-      alert(data.message)
+    catch {
+      alert('Ошибка при создании аккаунта');
     }
-
   }
 
 

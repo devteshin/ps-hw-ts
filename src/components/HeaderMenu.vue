@@ -11,7 +11,7 @@ const router = useRouter();
 
 function logout() {
   authStore.clearToken();
-  router.push({name: '/login'});
+  router.push({name: 'login'});
 };
 
 
