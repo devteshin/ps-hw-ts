@@ -6,11 +6,16 @@ export const router = createRouter({
     {
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
-      component: () => import('./views/RegistrationView.vue'),
+      component: () => import('./views/NotFoundView.vue'),
+    },
+    {
+      path: '/',
+      component: () => import('./views/StartView.vue'),
+      name: 'start',
     },
     {
       path: '/login',
-      component: () => import('./views/AuthWiew.vue'),
+      component: () => import('./views/AuthView.vue'),
       name: 'login',
     },
     {
@@ -34,10 +39,10 @@ export const router = createRouter({
 
 router.beforeEach((to) => {
   const authStore = useAuthStore()
-  if (!authStore.getToken && !(to.name == 'login' || to.name == 'register')) {
+  if (!authStore.getToken && !(to.name == 'login' || to.name == 'register' || to.name == 'start')) {
     return { name: 'login' }
   }
-  if (authStore.getToken && (to.name == 'NotFound' || to.name == 'login' || to.name == 'register')) {
+  if (authStore.getToken && (to.name == 'login' || to.name == 'register' || to.name == 'start')) {
     return { name: 'main' }
   }
 

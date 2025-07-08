@@ -17,6 +17,7 @@
         border: none;
         color: white;
         font-size: 25px;
+        font-weight: 500;
         width: 321px;
         height: 61px;
         border-radius: 10px;
