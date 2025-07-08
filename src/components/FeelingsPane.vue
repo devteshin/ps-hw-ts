@@ -1,20 +1,30 @@
 <script setup lang="ts">
-import FillingButtons from '@/components/FillingButtons.vue';
+import FeelingButtons from '@/components/FeelingButtons.vue';
+import { useProfileStore } from '@/stores/profile.store';
+import { onMounted } from 'vue';
+
+const store = useProfileStore();
+
+onMounted(() => {
+  store.fetchProfile();
+});
+
+
 </script>
 
 <template>
-    <div class="fillings">
-        <div class="fillings__avatar">
+    <div class="feelings">
+        <div class="feelings__avatar">
             <img src="/public/avatar.png" alt="Изображение пользователя">
         </div>
-        <div class="fillings__welcome">
-            Добро пожаловать, Наталья!
+        <div class="feelings__welcome">
+            Добро пожаловать, {{ store.profile }} !
         </div>
-        <div class="fillings__question">
+        <div class="feelings__question">
             Как вы сегодня себя чувствуете?
         </div>
-        <div class="fillings__buttons">
-            <FillingButtons />
+        <div class="feelings__buttons">
+            <FeelingButtons />
         </div>
 
 
@@ -22,27 +32,27 @@ import FillingButtons from '@/components/FillingButtons.vue';
 </template>
 
 <style scoped>
-    .fillings {
+    .feelings {
         display: flex;
         flex-direction: column;
         padding-left: 50px;
     }
-    .fillings__avatar{
+    .feelings__avatar{
         height: 129px;
         width: 129px;
         margin-bottom: 30px;
     }
-    .fillings__welcome {
+    .feelings__welcome {
         font-weight: 500;
         font-size: 30px;
         margin-bottom: 2px;
     }
-    .fillings__question {
+    .feelings__question {
         font-weight: 400;
         font-size: 22px;
         margin-bottom: 39px;
     }
-    .fillings__buttons {
+    .feelings__buttons {
         display: flex;
         flex-direction: row;
         align-items: center;

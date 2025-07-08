@@ -6,11 +6,16 @@ import IconRelax from './icons/IconRelax.vue';
 defineProps({
   iconName: String
 });
+
+const emit = defineEmits<{
+(e: 'feeling', optinon: string | undefined): void
+}>();
+
 </script>
 
 <template>
-    <div class="button-group">
-        <button class="button-rectangle">
+    <div class="button-group" v-if="iconName">
+        <button class="button-rectangle" @click="() => emit('feeling', iconName)">
             <IconRelax v-show="iconName=='Расслабленно'"/>
             <IconCalm v-show="iconName=='Спокойно'"/>
             <IconFocus v-show="iconName=='Фокусированно'"/>

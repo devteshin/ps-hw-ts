@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import FillingsPane from '@/components/FillingsPane.vue';
+import FeelingsPane from '@/components/FeelingsPane.vue';
 import MeditationCard from '../components/MeditationCards.vue';
 import HeaderMenu from '@/components/HeaderMenu.vue';
 
@@ -12,7 +12,7 @@ import HeaderMenu from '@/components/HeaderMenu.vue';
     </div>
     <div class="main-pane">
         <div class="left-pane">
-            <FillingsPane />
+            <FeelingsPane />
         </div>
         <div class="right-pane">
             <MeditationCard/>

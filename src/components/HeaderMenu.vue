@@ -1,8 +1,19 @@
 <script setup lang="ts">
+import { useAuthStore } from '@/stores/auth.store';
 import IconLogo from './icons/IconLogo.vue';
 import IconMenuChart from './icons/IconMenuChart.vue';
 import IconMenuExit from './icons/IconMenuExit.vue';
 import IconMenuStart from './icons/IconMenuStart.vue';
+import { useRouter } from 'vue-router';
+
+const authStore = useAuthStore();
+const router = useRouter();
+
+function logout() {
+  authStore.clearToken();
+  router.push({name: 'auth/login'});
+};
+
 
 </script>
 
@@ -15,7 +26,7 @@ import IconMenuStart from './icons/IconMenuStart.vue';
             <div class="menu-item">
                 <IconMenuStart />
                 <div class="menu-item-title">
-                  <RouterLink :to="`/`" active-class="router-link-active">Медитация</RouterLink>
+                  <RouterLink :to="`/main`" active-class="router-link-active">Медитация</RouterLink>
                 </div>
             </div>
             <div class="menu-item-border">
@@ -27,7 +38,7 @@ import IconMenuStart from './icons/IconMenuStart.vue';
             <div class="menu-item">
                 <IconMenuExit />
                 <div class="menu-item-title">
-                  <RouterLink :to="`/`" active-class="router-link-active">Выход</RouterLink>
+                  <a href="#" @click="logout">Выход</a>
                 </div>
             </div>
 

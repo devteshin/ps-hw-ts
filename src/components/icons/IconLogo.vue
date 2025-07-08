@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { width = 255, height = 250} = defineProps({
+const { width = 76, height = 86} = defineProps({
     width: Number,
     height: Number,
 })
