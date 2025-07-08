@@ -8,7 +8,7 @@ export const useProfileStore = defineStore('profile', () => {
 
   async function fetchProfile() {
     const { data } = await client().get(API_ROUTES.profile);
-    profile.value = data.data.user.username;
+    profile.value = data.data.user;
   }
 
   return { profile, fetchProfile }

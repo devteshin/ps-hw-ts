@@ -3,15 +3,15 @@ import { useAuthStore } from './stores/auth.store'
 
 export const router = createRouter({
   routes: [
-    {
+     {
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
       component: () => import('./views/AuthWiew.vue'),
     },
     {
-      path: '/',
+      path: '/login',
       component: () => import('./views/AuthWiew.vue'),
-      name: 'auth',
+      name: 'login',
     },
     {
       path: '/register',
@@ -34,8 +34,8 @@ export const router = createRouter({
 
 router.beforeEach((to) => {
   const authStore = useAuthStore()
-  if (!authStore.getToken && to.name != 'auth') {
-    return { name: 'auth' }
+  if (!authStore.getToken && !(to.name == 'login' || to.name == 'register')) {
+    return { name: 'login' }
   }
 })
 

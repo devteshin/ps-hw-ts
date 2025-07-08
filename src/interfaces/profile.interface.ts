@@ -1,5 +1,5 @@
 export interface Profile {
-  name: string
+  username: string
 }
 
   //data: {user: {username: string}}

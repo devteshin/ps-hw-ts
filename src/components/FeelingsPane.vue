@@ -17,8 +17,8 @@ onMounted(() => {
         <div class="feelings__avatar">
             <img src="/public/avatar.png" alt="Изображение пользователя">
         </div>
-        <div class="feelings__welcome">
-            Добро пожаловать, {{ store.profile }} !
+        <div v-if="store.profile" class="feelings__welcome">
+            Добро пожаловать, {{ store.profile.username }} !
         </div>
         <div class="feelings__question">
             Как вы сегодня себя чувствуете?
