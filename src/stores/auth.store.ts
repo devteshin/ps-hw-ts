@@ -32,7 +32,8 @@ export const useAuthStore = defineStore('auth', () => {
         userName,
         password,
       })
-      if (data.message == 'success') {
+      console.log(data.message);
+      if (data.status == 'success') {
         setToken(data.data.token)
       } else {
         alert(data.message)

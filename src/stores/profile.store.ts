@@ -7,8 +7,13 @@ export const useProfileStore = defineStore('profile', () => {
   const profile = ref<Profile>()
 
   async function fetchProfile() {
-    const { data } = await client().get(API_ROUTES.profile);
-    profile.value = data.data.user;
+    try {
+      const { data } = await client().get(API_ROUTES.profile);
+      profile.value = data.data.user;
+    }
+    catch {
+      alert("Ошибка загрузки профиля пользователя");
+    }
   }
 
   return { profile, fetchProfile }

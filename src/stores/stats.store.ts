@@ -4,10 +4,15 @@ import { defineStore } from 'pinia'
 export const useStatStore = defineStore('stats', () => {
 
   async function setFeeling(feeling: string) {
-    await client().post(API_ROUTES.stats, {
-      type: feeling,
-      value: 1,
-    });
+    try {
+      await client().post(API_ROUTES.stats, {
+        type: feeling,
+        value: 1,
+      });
+    }
+    catch {
+      alert("Ошибка при обновлении статистики");
+    }
   };
 
   return { setFeeling }

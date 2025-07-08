@@ -3,10 +3,10 @@ import { useAuthStore } from './stores/auth.store'
 
 export const router = createRouter({
   routes: [
-     {
+    {
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
-      component: () => import('./views/AuthWiew.vue'),
+      component: () => import('./views/RegistrationView.vue'),
     },
     {
       path: '/login',
@@ -37,5 +37,9 @@ router.beforeEach((to) => {
   if (!authStore.getToken && !(to.name == 'login' || to.name == 'register')) {
     return { name: 'login' }
   }
+  if (authStore.getToken && (to.name == 'NotFound' || to.name == 'login' || to.name == 'register')) {
+    return { name: 'main' }
+  }
+
 })
 
