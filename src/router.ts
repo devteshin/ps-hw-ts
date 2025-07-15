@@ -33,6 +33,11 @@ export const router = createRouter({
       component: () => import('./views/StatView.vue'),
       name: 'stat',
     },
+    {
+      path: '/timer/:id',
+      component: () => import('./views/TimerView.vue'),
+      name: 'timer',
+    },
   ],
   history: createWebHistory(),
 })
