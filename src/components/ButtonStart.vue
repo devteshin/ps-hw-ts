@@ -1,10 +1,17 @@
 <script setup lang="ts">
 import IconPlay from './icons/IconPlay.vue';
 
+const { meditation_id } = defineProps< {meditation_id: number} >();
+
+const emit = defineEmits<{
+(e: 'start-meditation', meditation_id: number): void
+}>();
+
+
 </script>
 
 <template>
-    <button class="button">
+    <button class="button" @click="emit('start-meditation', meditation_id)">
         <div>Начать</div>
         <IconPlay/>
     </button>

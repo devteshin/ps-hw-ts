@@ -2,12 +2,18 @@
 import { useMeditationStore } from '@/stores/meditations.store';
 import { onMounted } from 'vue';
 import ButtonStart from './ButtonStart.vue';
+import { useRouter } from 'vue-router';
 
 const store = useMeditationStore();
+const router = useRouter();
 
 onMounted(() => {
     store.fetchMeditations();
 });
+
+function redirectToTimer(meditation_id: number) {
+  router.push({name: 'timer', params: {id: meditation_id}});
+};
 
 </script>
 
@@ -17,7 +23,7 @@ onMounted(() => {
             <div class="title">{{ item.title }}</div>
             <div class="description">{{ item.description }}</div>
             <div class="button-wrap">
-                <ButtonStart/>
+                <ButtonStart @start-meditation="redirectToTimer" :meditation_id="item.id"/>
                 <div>{{ item.duration_min }} мин</div>
             </div>
         </div>
